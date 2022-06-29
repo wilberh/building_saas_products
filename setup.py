@@ -8,6 +8,9 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'flask',
+        'Flask==2.1.2',
+        'Flask-SQLAlchemy==2.5.1',
+        'psycopg2-binary==2.9.3',
+        'Flask-Migrate==3.1.0',
     ],
 )
