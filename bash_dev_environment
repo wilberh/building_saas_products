@@ -1,0 +1,59 @@
+# Install PostgreSQL
+sudo apt install postgresql-12
+sudo apt install postgresql-client-12
+# sudo vi /etc/postgresql/12/main/pg_hba.conf
+
+# Create initial DB
+sudo -u postgres createdb flaskapp1
+
+# Activate Python environment
+python3.10 -m venv venv
+source venv/bin/activate
+
+# Install Python dependencies
+python -m pip install -U pip
+pip install -r requirements.txt
+
+# Set environment variables
+# source .env_variables
+# Set environment variables - making Project Installable - variables, https://flask.palletsprojects.com/en/2.1.x/tutorial/install/
+source ..env_proj_installable_variables
+
+# --------------------------------------------------------------------------------------------
+# OPTION-1: Will drop-all tables, then Recreate all tables and add dummy data
+# ELSE: use "flask_migrate", https://pypi.org/project/Flask-Migrate/
+# python recreate_tables_dummy_data.py
+
+# --------------------------------------------------------------------------------------------
+# OPTION-2: using "flask" command flask_migrate to handle/version-control table creation (no data) - similar to Django
+# Enables migration support (if DB already exists)
+# flask db init --package
+# flask db init --directory flaskr/migrations
+flask db init
+
+# Create initial migrations 
+# FYI - The migration script needs to be reviewed and edited, 
+# as Alembic currently does not detect every change you make to your models. 
+# In particular, Alembic is currently unable to detect indexes. 
+# Once finalized, the migration script also needs to be added to version control
+# flask db migrate -m "Initial migration" --directory flaskr/migrations
+flask db migrate -m "Initial migration"
+
+# Apply migration to DB
+# flask db upgrade --directory flaskr/migrations
+flask db upgrade
+
+# Run Flask app
+flask run
+
+
+# --------------------------------------------------------------------------------------------
+
+
+
+# --------------------------------------------------------------------------------------------
+# Linux commands
+# netstat -nlp | grep 5000
+# or
+# sudo lsof -i -P -n
+# kill <PID>

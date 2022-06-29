@@ -1,0 +1,4 @@
+include saas/schema.sql
+graft saas/static
+graft saas/templates
+global-exclude *.pyc
