@@ -17,7 +17,7 @@ pip install -r requirements.txt
 # Set environment variables
 # source .env_variables
 # Set environment variables - making Project Installable - variables, https://flask.palletsprojects.com/en/2.1.x/tutorial/install/
-source ..env_proj_installable_variables
+source .env_proj_installable_variables
 
 # --------------------------------------------------------------------------------------------
 # OPTION-1: Will drop-all tables, then Recreate all tables and add dummy data

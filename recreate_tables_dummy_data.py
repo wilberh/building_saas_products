@@ -1,6 +1,6 @@
 # Import DB object and models
-from .src.saas.app import db
-from .src.saas.models.user import User
+from .src.app import db
+from .src.models.user import User
 
 # Drop all tables
 db.drop_all()
